@@ -1,0 +1,26 @@
+name: ci
+
+on: push
+
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: check system
+      run: |
+        lscpu
+
+    - name: setup
+      run: |
+        cat /etc/os-release
+        bash scripts/setup/start_redis.sh
+        bash scripts/setup/install_python_pkgs.sh
+
+    - name: run python
+      run: |
+        bash scripts/run_python_sub.sh &
+        bash scripts/run_python_pub.sh
