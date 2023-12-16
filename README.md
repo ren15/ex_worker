@@ -6,10 +6,12 @@ It subs from redis, and do it's work when some jobs are published from python.
 
 
 ## Progress
-
-TODO:
+DONE:
 
 1. start redis
 2. python pub sub
-3. elixir sub 
-4. run everything in github action.
+
+TODO:
+
+4. elixir sub 
+5. run everything in github action.
