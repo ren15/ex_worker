@@ -23,4 +23,5 @@ jobs:
     - name: run python
       run: |
         bash scripts/run_python_sub.sh &
+        sleep 3
         bash scripts/run_python_pub.sh
