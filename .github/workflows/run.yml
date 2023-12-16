@@ -28,3 +28,7 @@ jobs:
         bash scripts/run_python_sub.sh &
         sleep 3
         bash scripts/run_python_pub.sh
+
+    - name: run python async
+      run: |
+        python src/python/async_case.py
