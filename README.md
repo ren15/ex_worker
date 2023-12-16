@@ -15,3 +15,4 @@ TODO:
 
 4. elixir sub 
 5. run everything in github action.
+6. elixir consumer from redpanda
