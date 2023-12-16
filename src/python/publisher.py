@@ -1,8 +1,5 @@
 import os
-
 from typing import Optional
-
-import random
 import logging
 
 import redis

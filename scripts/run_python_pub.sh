@@ -8,9 +8,9 @@ server_pid=$!
 sleep 3
 
 curl -X POST \
-    http://127.0.0.1:8000/messaging/send \
-    -H 'Content-Type: application/text' \
-    "hello"
+    -H 'Content-Type: text/plain' \
+    --data "hello" \
+    http://127.0.0.1:8000/messaging/send
 
 kill $server_pid
 
