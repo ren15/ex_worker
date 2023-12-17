@@ -29,6 +29,7 @@ async def main():
 
         await r.publish("channel:1", "Hello")
         await r.publish("channel:2", "World")
+        await r.publish("channel:3", "again")
         await r.publish("channel:1", STOPWORD)
 
         await future
