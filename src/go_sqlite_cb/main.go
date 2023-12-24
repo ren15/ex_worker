@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	"io"
 	"log"
 	"net/http"
 
@@ -16,7 +17,12 @@ func validate(y int64) int64 {
 	if err != nil {
 		fmt.Println(err)
 	} else {
-		fmt.Println(res)
+		defer res.Body.Close()
+		body, err := io.ReadAll(res.Body)
+		if err != nil {
+			fmt.Println(err)
+		}
+		fmt.Println("http get request body length:",len(string(body)))
 	}
 	return y % 2
 }
