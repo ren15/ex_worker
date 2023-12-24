@@ -15,4 +15,6 @@ TODO:
 
 4. elixir sub 
 5. run everything in github action.
-6. elixir consumer from redpanda
+6. elixir consumer from redpanda https://hexdocs.pm/broadway/apache-kafka.html#getting-started https://hexdocs.pm/broadway/architecture.html#the-supervision-tree
+
+7. golang callback from sqlite

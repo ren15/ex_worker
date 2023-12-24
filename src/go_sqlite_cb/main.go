@@ -3,15 +3,26 @@ package main
 import (
 	"database/sql"
 	"fmt"
-	sqlite "github.com/mattn/go-sqlite3"
 	"log"
+	"net/http"
+
+	sqlite "github.com/mattn/go-sqlite3"
 )
 
 func validate(y int64) int64 {
+	// check if we can issue a HTTP request in the sqlite custom function
+	requestURL := "https://example.com"
+	res, err := http.Get(requestURL)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println(res)
+	}
 	return y % 2
 }
 
 func main() {
+
 	sql.Register("sqlite3_custom", &sqlite.SQLiteDriver{
 		ConnectHook: func(conn *sqlite.SQLiteConn) error {
 			if err := conn.RegisterFunc("validate", validate, false); err != nil {
