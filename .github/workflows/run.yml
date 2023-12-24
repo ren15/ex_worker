@@ -33,6 +33,19 @@ jobs:
       run: |
         python src/python/async_case.py
 
+  run_go:
+    runs-on: ubuntu-22.04
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: check system
+      run: |
+        lscpu
+        free -h
+        df -h 
+        cat /etc/os-release
+
     - name: run go_sqlite
       run: |
-        python scripts/go_sqlite_cb/run.sh
+        bash scripts/go_sqlite_cb/run.sh
