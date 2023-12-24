@@ -32,3 +32,7 @@ jobs:
     - name: run python async
       run: |
         python src/python/async_case.py
+
+    - name: run go_sqlite
+      run: |
+        python scripts/go_sqlite_cb/run.sh
