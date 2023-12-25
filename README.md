@@ -4,6 +4,9 @@ This repo is demoing in elixir as a worker.
 
 It subs from redis, and do it's work when some jobs are published from python.
 
+## Sections
+
+[go_sqlite_cb](src/go_sqlite_cb/README.md)
 
 ## Progress
 
@@ -11,7 +14,6 @@ DONE:
 
 1. start redis
 2. python pub sub `src/python`
-7. golang callback from sqlite `src/go_sqlite_cb`
 
 TODO:
 
