@@ -10,6 +10,9 @@ import (
 	sqlite "github.com/mattn/go-sqlite3"
 )
 
+// a channel as a global variable
+var ch chan int64
+
 func validate(y int64) int64 {
 	// check if we can issue a HTTP request in the sqlite custom function
 	requestURL := "https://example.com"
@@ -22,12 +25,32 @@ func validate(y int64) int64 {
 		if err != nil {
 			fmt.Println(err)
 		}
-		fmt.Println("http get request body length:",len(string(body)))
+		fmt.Println("http get request body length:", len(string(body)))
 	}
+	ch <- y
 	return y % 2
 }
 
 func main() {
+
+	ch = make(chan int64)
+
+	go func() {
+		for {
+			select {
+			case y := <-ch:
+				fmt.Println("go func1 get y:", y)
+			}
+		}
+	}()
+	go func() {
+		for {
+			select {
+			case y := <-ch:
+				fmt.Println("go func2 get y:", y)
+			}
+		}
+	}()
 
 	sql.Register("sqlite3_custom", &sqlite.SQLiteDriver{
 		ConnectHook: func(conn *sqlite.SQLiteConn) error {
